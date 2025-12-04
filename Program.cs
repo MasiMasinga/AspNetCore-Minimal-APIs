@@ -8,13 +8,6 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-var book_list = new List<Book>
-{
-    new Book { Id = 1, Title = "Harry Potter", Pages = 120 },
-    new Book { Id = 2, Title = "James and Giant Beach", Pages = 255 },
-    new Book { Id = 3, Title = "Design Patterns", Pages = 505 },
-};
-
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -44,6 +37,13 @@ app.MapPost("/api/movies", (MovieDetails new_movie) =>
 {
     return Results.Created($"/api/movies/{new_movie.Year}", new_movie);
 });
+
+var book_list = new List<Book>
+{
+    new Book { Id = 1, Title = "Harry Potter", Pages = 120 },
+    new Book { Id = 2, Title = "James and Giant Beach", Pages = 255 },
+    new Book { Id = 3, Title = "Design Patterns", Pages = 505 },
+};
 
 app.MapPost("/api/books", (Book book) =>
 {
